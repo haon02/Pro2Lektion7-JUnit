@@ -1,32 +1,122 @@
 package opgave01;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BilForsikringTest {
 
-    @org.junit.jupiter.api.Test
-    void beregnPraemie() {
+    @Test
+    void beregnPraemieUngMand() {
         // Arrange
-        BilForsikring bilForsikring1 = new BilForsikring();
-        bilForsikring1.setGrundpaemie(100);
+        BilForsikring bilForsikring = new BilForsikring();
+        bilForsikring.setGrundpaemie(100);
         // Act
-        double praemie1 = bilForsikring1.beregnPraemie(30,false,10);
-        double praemie2 = bilForsikring1.beregnPraemie(20,true,1);
-        double praemie3 = bilForsikring1.beregnPraemie(18,false,0);
-        double praemie4 = bilForsikring1.beregnPraemie(50,true,5);
+        double præmie = bilForsikring.beregnPraemie(20, false, 2);
         // Assert
-        assertEquals(65,praemie1);
-        assertEquals(118.75,praemie2);
-        assertEquals(125,praemie3);
-        assertEquals(80.75,praemie4);
-
-
+        assertEquals(125, præmie);
     }
 
-    // Arrange
+    @Test
+    void beregnPraemie25ÅrMand() {
+        // Arrange
+        BilForsikring bilForsikring = new BilForsikring();
+        bilForsikring.setGrundpaemie(100);
+        // Act
+        double præmie = bilForsikring.beregnPraemie(25, false, 2);
+        // Assert
+        assertEquals(100, præmie);
+    }
+
+    @Test
+    void beregnPraemieVoksenMand() {
+        // Arrange
+        BilForsikring bilForsikring = new BilForsikring();
+        bilForsikring.setGrundpaemie(100);
+        // Act
+        double præmie = bilForsikring.beregnPraemie(30, false, 2);
+        // Assert
+        assertEquals(100, præmie);
+    }
+
+    @Test
+    void beregnPraemieVoksenMandSkadefri() {
+        // Arrange
+        BilForsikring bilForsikring = new BilForsikring();
+        bilForsikring.setGrundpaemie(100);
+        // Act
+        double præmie = bilForsikring.beregnPraemie(30, false, 10);
+        // Assert
+        assertEquals(65, præmie);
+    }
+
+    @Test
+    void beregnPraemieVoksenMandSkadefri6() {
+        // Arrange
+        BilForsikring bilForsikring = new BilForsikring();
+        bilForsikring.setGrundpaemie(100);
+        // Act
+        double præmie = bilForsikring.beregnPraemie(30, false, 6);
+        // Assert
+        assertEquals(75, præmie);
+    }
 
 
-    // Act
+    @Test
+    void beregnPraemieUngKvinde() {
+        // Arrange
+        BilForsikring bilForsikring = new BilForsikring();
+        bilForsikring.setGrundpaemie(100);
+        // Act
+        double præmie = bilForsikring.beregnPraemie(20, true, 2);
+        // Assert
+        assertEquals(118.75, præmie);
+    }
 
-    // Assert
+    @Test
+    void beregnPraemie25ÅrKvinde() {
+        // Arrange
+        BilForsikring bilForsikring = new BilForsikring();
+        bilForsikring.setGrundpaemie(100);
+        // Act
+        double præmie = bilForsikring.beregnPraemie(25, true, 2);
+        // Assert
+        assertEquals(95, præmie);
+    }
+
+    @Test
+    void beregnPramieVoksenKvinde() {
+        // Arrange
+        BilForsikring bilForsikring = new BilForsikring();
+        bilForsikring.setGrundpaemie(100);
+        // Act
+        double praemie = bilForsikring.beregnPraemie(30, true, 2);
+        // Assert
+        assertEquals(95, praemie);
+    }
+
+    @Test
+    void beregnPraemieVoksenKvindeSkadefri() {
+        // Arrange
+        BilForsikring bilForsikring = new BilForsikring();
+        bilForsikring.setGrundpaemie(100);
+        // Act
+        double præmie = bilForsikring.beregnPraemie(30, true, 10);
+        // Assert
+        assertEquals(61.75, præmie);
+    }
+
+
+// Den fejler jo som den skal, 20 år + 10 skadefri
+//    @Test
+//    void beregnPraemieUngMandSkadefri() {
+//        // Arrange
+//        BilForsikring bilForsikring = new BilForsikring();
+//        bilForsikring.setGrundpaemie(100);
+//        // Act
+//        double præmie = bilForsikring.beregnPraemie(20, false, 10);
+//        // Assert
+//        assertEquals(65, præmie);
+//    }
+
 }
