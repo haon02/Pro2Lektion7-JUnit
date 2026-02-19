@@ -27,10 +27,10 @@ class BibliotekTest {
         //Arrange
         Bibliotek bibliotek = new Bibliotek();
         LocalDate beregnetDato = LocalDate.of(2026, 5, 1);
-        LocalDate faktiskDato = LocalDate.of(2026, 5, 2);
+        LocalDate faktiskDato = LocalDate.of(2026, 5, 1);
         boolean voksen = true;
         //Act
-        int expected = 20;
+        int expected = 0;
         int actual = bibliotek.beregnBøde(beregnetDato, faktiskDato, voksen);
         //Assert
         assertEquals(expected, actual);

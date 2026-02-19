@@ -6,6 +6,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BilForsikringTest {
 
+
+    @Test
+    void beregnPraemieHvisGrundPrEr0(){
+        BilForsikring bilForsikring = new BilForsikring();
+        assertThrows(RuntimeException.class, ()-> bilForsikring.beregnPraemie(18,true,3));
+    }
+
+
     @Test
     void beregnPraemieUngMand() {
         // Arrange
